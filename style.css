@@ -1,0 +1,150 @@
+:root {
+    --bg-color: #050505;
+    --text-color: #ffffff;
+    --accent-color: #00d4ff;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --blur: 15px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Background Animations */
+.background-blobs {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    animation: move 20s infinite alternate;
+}
+
+.blob-1 {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(to right, #00d4ff, #0055ff);
+    top: -100px;
+    right: -100px;
+}
+
+.blob-2 {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(to right, #ff00cc, #3333ff);
+    bottom: -50px;
+    left: -50px;
+    animation-delay: -5s;
+}
+
+.blob-3 {
+    width: 250px;
+    height: 250px;
+    background: linear-gradient(to right, #00ff88, #00d4ff);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-duration: 15s;
+}
+
+@keyframes move {
+    from { transform: translate(0, 0) scale(1); }
+    to { transform: translate(100px, 100px) scale(1.2); }
+}
+
+/* Main Container */
+.container {
+    text-align: center;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.highlight {
+    background: linear-gradient(90deg, #00d4ff, #00ff88);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    opacity: 0.7;
+    margin-bottom: 3rem;
+    letter-spacing: 2px;
+}
+
+/* Glassmorphism Card */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--blur));
+    -webkit-backdrop-filter: blur(var(--blur));
+    border: 1px solid var(--glass-border);
+    padding: 3rem 5rem;
+    border-radius: 2rem;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 48px 0 rgba(0, 212, 255, 0.2);
+}
+
+.clock-display {
+    font-size: 5rem;
+    font-weight: 300;
+    letter-spacing: 5px;
+    margin-bottom: 0.5rem;
+}
+
+.date-display {
+    font-size: 1.2rem;
+    opacity: 0.6;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+/* Animations */
+.fade-in { animation: fadeIn 1s ease-out forwards; }
+.fade-in-delayed { animation: fadeIn 1s ease-out 0.5s forwards; opacity: 0; }
+.fade-in-delayed-more { animation: fadeIn 1s ease-out 1s forwards; opacity: 0; }
+.fade-in-delayed-most { animation: fadeIn 1s ease-out 1.5s forwards; opacity: 0; margin-top: 2rem; font-size: 0.8rem; opacity: 0.4; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+    .hero h1 { font-size: 2.5rem; }
+    .clock-display { font-size: 3rem; }
+    .glass-card { padding: 2rem; }
+}
